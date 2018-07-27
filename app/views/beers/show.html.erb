@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-4">
+  <%= image_tag @beer.beer_img.url(:beer_show), class: "beer-show" %>
+  </div>
+
+  <div class="col-md-8">
+    <div class="beer-info">
+
+    <h1 class="beer-title"><strong><%= @beer.name %></strong></h1>
+    <h3 class="beer-company"><i><span>by</span> <%= @beer.company %></i></h3>
+    <h2 class="avg-rating">Average Rating</h2>
+    <div class="average-review-rating" data-score=<%= @average_review %>></div>
+    <span class="number-of-reviews">Based on <%= @beer.reviews.count %> reviews</span>
+    <h3 >Description</h3>
+    <h4 class="beer-desc"><%= @beer.description %></h4>
+    <h4>Category: <%= @beer.category.name %></h4>
+    <h4>Style: <%= @beer.style %></h4>
+    <h4>ABV: <%= @beer.ABV %></h4>
+  </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-4">
+
+    <div class="reviews">
+      <!-- here the reviews/ratings will go -->
+      <h1>Reviews</h1>
+      <%= render @beer.reviews %>
+
+      <div>
+        <%= link_to "Add Review", new_beer_review_path(@beer), class: "btn-custom" %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="links btn-group">
+  <%= link_to "Back", root_path, class: "btn btn-custom" %>
+
+  <% if user_signed_in? %>
+
+    <% if @beer.user_id == current_user.id %>
+
+      <%= link_to "Edit", edit_beer_path(@beer), class: "btn btn-custom" %>
+      <%= link_to "Delete", beer_path(@beer), method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-custom" %>
+
+    <% end %>
+
+  <% end %>
+</div>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+$('.average-review-rating').raty({
+  readOnly: true,
+  score: function(){
+    return $(this).attr('data-score');
+  },
+  path: '/assets/'
+});
+</script>

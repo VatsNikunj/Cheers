@@ -1,0 +1,12 @@
+<%= simple_form_for @beer, :html => { :multipart => true} do |f| %>
+
+  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category") %>
+  <%= f.file_field :beer_img %>
+  <%= f.input :name, label: "Beer Name" %>
+  <%= f.input :description %>
+  <%= f.input :style %>
+  <%= f.input :ABV %>
+  <%= f.input :company %>
+  <%= f.button :submit, :class => 'btn-custom2' %>
+
+<% end %>
