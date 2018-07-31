@@ -1,0 +1,28 @@
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @beers.count == 0 %>
+  <h2>No beers here.</h2>
+<% else %>
+
+  <div class="botd">
+  <% @botd.each do |botd| %>
+  <div class="botdLabel"
+	<a href="/beers/<%= botd.id %>">
+		<%= image_tag botd.beer_img.url(:beer_index), class: "beer" %>
+	</a>
+  </div>
+  <% end %>
+ </div>
+
+  <div class="row">
+
+    <% @beers.each do |beer| %>
+    <div class="col-md-3">
+      <a href="/beers/<%= beer.id %>">
+        <%= image_tag beer.beer_img.url(:beer_index), class: "beer" %>
+      </a>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+
