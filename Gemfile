@@ -38,8 +38,7 @@ gem 'jquery-rails'
 gem 'paperclip', '~> 6.0'
 gem 'jquery', '~> 0.0.1'
 gem 'gmaps4rails'
-
-
+gem 'searchkick', '~> 3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

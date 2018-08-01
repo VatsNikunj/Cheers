@@ -3,13 +3,13 @@ class BeersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def search
-    if params[:search].blank?
-      redirect_to(root_path, alert: "Empty field!") and return
+    if params[:search].present?
+      @beers = Beer.search(params[:search])
     else
-      @parameter = params[:search].downcase
-      @results = Beer.all.where("lower(name) LIKE :search", search: @parameter)
+      @beers = Beer.all
     end
   end
+
 
   def index
     if params[:category].blank?

@@ -1,0 +1,35 @@
+
+<h1>UserName: <b><%= @user.email %></b></h1>
+
+<h2>Account Activity</h2>
+
+<h3>Recent reviews</h3>
+
+<% @user_reviews.each do |review| %>
+  <h4><%= link_to review.beer.name, beer_path(review.beer) %></h4>
+  <h6>reviewed on <%= review.created_at%></h6>
+  <div class="review-rating" data-score="<%= review.rating %>"></div>
+  <h5> <%= review.comment %></h5>
+
+<% end %>
+
+
+<h3>Recently added beers</h3>
+
+<% @user_beers.each do |beer| %>
+  <h4><%= link_to beer.name, beer_path(beer) %></h4>
+<% end %>
+
+<h2>Recommendations</h2>
+
+
+
+<script>
+$('.review-rating').raty({
+  readOnly: true,
+  score: function(){
+    return $(this).attr('data-score');
+  },
+  path: '/assets/'
+});
+</script>

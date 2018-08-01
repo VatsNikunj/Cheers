@@ -1,4 +1,9 @@
-<h3>Search Result</h3>
-    <% @results.each do |result| %>
-        <%= result.beer.name %> <%= result.name %><br>
-    <% end %>
+<div class="row">
+  <% @beers.each do |beer| %>
+  <div class="col-md-3">
+    <a href="/beers/<%= beer.id %>">
+      <%= image_tag beer.beer_img.url(:beer_index), class: "beer" %>
+    </a>
+  </div>
+  <% end %>
+</div>

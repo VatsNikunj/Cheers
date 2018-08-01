@@ -1,4 +1,5 @@
 class Beer < ApplicationRecord
+  searchkick
   belongs_to :user
   belongs_to :category
   has_many :reviews
@@ -7,6 +8,6 @@ class Beer < ApplicationRecord
   validates_attachment_content_type :beer_img, :content_type => /\Aimage\/.*\z/
 
   def self.search(search)
-     where("lower(beers.name) LIKE :search OR lower(beers.company) LIKE :search", search: "%#{search.downcase}%").uniq   
+     where("lower(beers.name) LIKE :search OR lower(beers.company) LIKE :search", search: "%#{search.downcase}%").uniq
   end
 end
