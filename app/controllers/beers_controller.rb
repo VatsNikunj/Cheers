@@ -2,6 +2,15 @@ class BeersController < ApplicationController
   before_action :find_beer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
 
+  def search
+    if params[:search].blank?
+      redirect_to(root_path, alert: "Empty field!") and return
+    else
+      @parameter = params[:search].downcase
+      @results = Beer.all.where("lower(name) LIKE :search", search: @parameter)
+    end
+  end
+
   def index
     if params[:category].blank?
       @beers = Beer.all.order("created_at DESC")
@@ -57,7 +66,7 @@ class BeersController < ApplicationController
   private
 
     def beer_params
-      params.require(:beer).permit(:name, :description, :style, :ABV, :company, :category_id, :beer_img)
+      params.require(:beer).permit(:name, :description, :style, :ABV, :company, :category_id, :beer_img, :lat, :long)
     end
 
     def find_beer

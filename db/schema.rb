@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_191503) do
+ActiveRecord::Schema.define(version: 2018_07_31_152224) do
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2018_07_26_191503) do
     t.string "beer_img_content_type"
     t.integer "beer_img_file_size"
     t.datetime "beer_img_updated_at"
+    t.float "lat"
+    t.float "long"
   end
 
   create_table "categories", force: :cascade do |t|

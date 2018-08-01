@@ -38,6 +38,18 @@
     </div>
 
   </div>
+
+  <div class="col-md-8">
+
+    <div class="beer-on-maps">
+
+      <div style='width: 725px;'>
+        <div id="map" style='width: 725px; height: 400px;'></div>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 
 <div class="links btn-group">
@@ -73,4 +85,26 @@ $('.average-review-rating').raty({
   },
   path: '/assets/'
 });
+</script>
+
+<script async defer
+src="//maps.google.com/maps/api/js?key=AIzaSyBPQk6TTYJrGZhGZV1BUmuc8w3xWWjFz0I&callback=initMap" type="text/javascript">
+</script>
+
+
+
+<script>
+      function initMap() {
+        var location = {lat: parseFloat(<%= @beer.lat %>), lng: parseFloat(<%= @beer.long %>)};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: location,
+          gestureHandling: 'cooperative'
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: 'hello',
+        });
+      }
 </script>

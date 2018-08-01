@@ -24,8 +24,8 @@
 	box-sizing: border-box;
 	background-color: #fff;
 	border-radius: 5px;
-	box-shadow: 3px 3px 3px 3px #ccc;
-	padding: 1.5em 1.25em;
+	box-shadow: 3px 3px 3px 3px #e5e6e8;
+	padding: 0.75em 0.75em;
 }
 
 
@@ -160,6 +160,7 @@ p.alert, p.notice {
 
 .beer-info {
 	@include background-tile;
+	margin-bottom: 40px;
 
 	.beer-title {
 		margin-top: 0;
@@ -186,6 +187,8 @@ p.alert, p.notice {
 		}
 	}
 
+
+
 	.beer-desc {
 		font-size: 1.05em;
 		line-height: 1.5;
@@ -195,7 +198,14 @@ p.alert, p.notice {
 
 }
 
+.beer-on-maps{
+	@include background-tile;
 
+	margin-top: 40px;
+
+
+
+}
 /* current-category styles */
 
 .current-category {

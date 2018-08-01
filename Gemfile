@@ -29,17 +29,17 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+
+#additional rubygems
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
-
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-
 gem 'devise', '~> 4.4', '>= 4.4.3'
-
 gem 'jquery-rails'
-
 gem 'paperclip', '~> 6.0'
-
 gem 'jquery', '~> 0.0.1'
+gem 'gmaps4rails'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
