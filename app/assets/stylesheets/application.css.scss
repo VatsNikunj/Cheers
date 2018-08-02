@@ -56,6 +56,11 @@ p.alert, p.notice {
 	font-family: 'Ubuntu', sans-serif;
 	text-transform: uppercase;
 }
+
+.navnav li {
+	padding: 1em;
+}
+
 .navbar-default {
 	background-color: #fff;
 	padding-bottom: 5px;
@@ -152,6 +157,19 @@ p.alert, p.notice {
 }
 
 /* FOOTER */
+footer {
+	background-color: #fff;
+	float: left;
+	width: 100%;
+
+}
+
+#button {
+	margin-top: 3em;
+	margin-left: 5em;
+	background-color: #8f7554;
+	border-color: #8f7554;
+}
 
 /* Beer styles */
 
