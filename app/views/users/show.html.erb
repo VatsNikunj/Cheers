@@ -29,11 +29,34 @@
 
 <% @user_beers.each do |beer| %>
   <h4><%= link_to beer.name, beer_path(beer) %></h4>
+  <h6>created on <%= beer.created_at%></h6>
+  <% if beer.user_id == current_user.id %>
+
+    <%= link_to "Edit", edit_beer_path(beer), class: "btn btn-custom" %>
+    <%= link_to "Delete", beer_path(beer), method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-custom" %>
+
+  <% end %>
 <% end %>
 
 <h2>Recommendations</h2>
 
-
+<% @user_reviews.each do |review| %>
+  <% if review.rating == Review.maximum('rating') %>
+    <% @beer = Beer.find(review.beer_id)%>
+    <h6>Based on your choice of <%= @beer.name%>: </h6>
+      <% Beer.all.each do |bear| %>
+        <% if bear.category_id == @beer.category_id or bear.ABV == @beer.ABV %>
+          <% if bear.user_id != @beer.user_id %>
+            <div class="col-md-3">
+              <a href="/beers/<%= bear.id %>">
+                <%= image_tag bear.beer_img.url(:beer_index), class: "beer" %>
+              </a>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
+<% end %>
 
 <script>
 $('.review-rating').raty({
