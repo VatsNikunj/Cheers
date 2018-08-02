@@ -35,6 +35,13 @@
 
           </ul>
 
+          <ul class="nav navnav navbar-right">
+          <%= form_tag search_beers_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+          <%= text_field_tag :search, params[:search], class: "form_control"%>
+              <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+            <% end %>
+          </ul>
+
           <!-- __________________CATEGORIES__________________ -->
           <ul class="nav navnav navbar-right">
             <li class="dropdown">
