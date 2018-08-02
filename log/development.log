@@ -26219,3 +26219,265 @@ Processing by BeersController#show as HTML
 Completed 200 OK in 339ms (Views: 321.8ms | ActiveRecord: 3.3ms)
 
 
+Started GET "/users/2" for 127.0.0.1 at 2018-08-02 13:13:12 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.6ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mBeer Load (0.2ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mBeer Load (0.2ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:45
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/users/show.html.erb:47
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  Rendered users/show.html.erb within layouts/application (24.7ms)
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 442ms (Views: 433.1ms | ActiveRecord: 3.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-08-02 13:13:32 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/ModXbcbG7XZ4X/xJQj1wxZjuFcYasI6IIXfY48+ak+T7H4uf7NKTtuEyU36QZRgwrjY0PArS+OkZ9Wbm2m0yw=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/rememberable.rb:62
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/rememberable.rb:62
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-02 13:13:32 -0400
+Processing by BeersController#index as HTML
+  Rendering beers/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "beers"[0m
+  ↳ app/views/beers/index.html.erb:3
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" ORDER BY created_at DESC[0m
+  ↳ app/views/beers/index.html.erb:9
+  Rendered beers/index.html.erb within layouts/application (4.8ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 306ms (Views: 300.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-08-02 13:13:34 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.9ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 534ms (Views: 530.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-08-02 13:13:35 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (25.0ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 268ms (Views: 266.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-08-02 13:13:37 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TRo0YHCSROY6IytPqBaZ407r54NPhxyoyn/JMFwYByfGOhQJ4p3RK/mtXsTJeChgf0hJM6fcyvA8mky8ynGZTA==", "user"=>{"email"=>"jonsnow@a.co", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "jonsnow@a.co"], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:22
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/trackable.rb:40
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-08-02 17:13:37.827741"], ["last_sign_in_at", "2018-08-02 07:24:14.968478"], ["sign_in_count", 6], ["updated_at", "2018-08-02 17:13:37.829794"], ["id", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/trackable.rb:40
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/trackable.rb:40
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-02 13:13:37 -0400
+Processing by BeersController#index as HTML
+  Rendering beers/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "beers"[0m
+  ↳ app/views/beers/index.html.erb:3
+  [1m[36mBeer Load (1.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" ORDER BY created_at DESC[0m
+  ↳ app/views/beers/index.html.erb:9
+  Rendered beers/index.html.erb within layouts/application (8.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 352ms (Views: 344.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-08-02 13:13:39 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.2ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[36mBeer Load (2.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  Rendered users/show.html.erb within layouts/application (20.5ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 376ms (Views: 364.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-08-02 13:13:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.4ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  Rendered users/show.html.erb within layouts/application (13.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 300ms (Views: 292.1ms | ActiveRecord: 2.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-08-02 13:14:01 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"OWgl9lpnO9Bpmr2skT5fUHvDYY2NT13untCUeUU8tgtzvTzs5omLI6lhrcIKdMdF0rwrO4S9NGMimay4OiptWQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/rememberable.rb:62
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/rememberable.rb:62
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-02 13:14:01 -0400
+Processing by BeersController#index as HTML
+  Rendering beers/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "beers"[0m
+  ↳ app/views/beers/index.html.erb:3
+  [1m[36mBeer Load (0.5ms)[0m  [1m[34mSELECT "beers".* FROM "beers" ORDER BY created_at DESC[0m
+  ↳ app/views/beers/index.html.erb:9
+  Rendered beers/index.html.erb within layouts/application (7.4ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 286ms (Views: 281.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-08-02 13:14:03 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.8ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 314ms (Views: 312.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-08-02 13:14:16 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"33+pDYr+HbCeX5grQr31L6hQKDsX5C2RLopn2F7reuDRfbcY9npLNiGhKq9q75932+f5wBP2dgh3tnrekGdtvg==", "user"=>{"email"=>"nedstark@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "nedstark@example.com"], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:22
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/trackable.rb:40
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-08-02 17:14:16.670457"], ["last_sign_in_at", "2018-08-02 15:02:27.194035"], ["sign_in_count", 9], ["updated_at", "2018-08-02 17:14:16.671474"], ["id", 2]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/trackable.rb:40
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/lib/devise/models/trackable.rb:40
+Redirected to http://localhost:3000/
+Completed 302 Found in 196ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-02 13:14:16 -0400
+Processing by BeersController#index as HTML
+  Rendering beers/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "beers"[0m
+  ↳ app/views/beers/index.html.erb:3
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers" ORDER BY created_at DESC[0m
+  ↳ app/views/beers/index.html.erb:9
+  Rendered beers/index.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 325ms (Views: 320.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-08-02 13:14:22 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mBeer Load (0.7ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/eden/.rvm/gems/ruby-2.5.1/gems/orm_adapter-0.5.0/lib/orm_adapter/adapters/active_record.rb:17
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mBeer Load (0.1ms)[0m  [1m[34mSELECT "beers".* FROM "beers" WHERE "beers"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:30
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  [1m[36mCACHE Beer Load (0.0ms)[0m  [1m[34mSELECT  "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:45
+  [1m[36mBeer Load (0.3ms)[0m  [1m[34mSELECT "beers".* FROM "beers"[0m
+  ↳ app/views/users/show.html.erb:47
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT MAX("reviews"."rating") FROM "reviews"[0m
+  ↳ app/views/users/show.html.erb:44
+  Rendered users/show.html.erb within layouts/application (32.6ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/application.html.erb:47
+Completed 200 OK in 384ms (Views: 364.1ms | ActiveRecord: 4.5ms)
+
+
