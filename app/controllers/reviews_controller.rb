@@ -22,9 +22,13 @@ class ReviewsController < ApplicationController
   def edit
   end
 
+
+
   def update
     if @review.update(review_params)
       @review = Review.find(params[:id])
+      redirect_to beer_path(@beer)
+
     else
       render 'edit'
     end

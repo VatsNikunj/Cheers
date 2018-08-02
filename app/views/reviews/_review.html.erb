@@ -1,7 +1,6 @@
 <div class="review">
-
+  <h6>On <%= review.created_at%> said <%= review.user.email%>: </h6>
   <div class="review-rating" data-score="<%= review.rating %>"></div>
-
   <p>
     <%= review.comment %>
   </p>

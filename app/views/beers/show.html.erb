@@ -32,7 +32,9 @@
       <%= render @beer.reviews %>
 
       <div>
-        <%= link_to "Add Review", new_beer_review_path(@beer), class: "btn-custom" %>
+        <% if user_signed_in? %>
+          <%= link_to "Add Review", new_beer_review_path(@beer), class: "btn-custom" %>
+        <% end %>
       </div>
 
     </div>
