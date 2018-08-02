@@ -4,7 +4,7 @@
 </div>
 
 <!-- __________________BOTD CONTENT__________________ -->
-<div class="row">
+<div class="row beercontainer">
    <div class="col-md-4">
     <!-- __________________BOTD IMAGE__________________ -->
     <a href="/beers/<%= @botd.id %>">
@@ -34,10 +34,9 @@
     <% @beers.each do |beer| %>
     <div class="col-md-3">
       <a href="/beers/<%= beer.id %>">
-        <%= image_tag beer.beer_img.url(:beer_index), class: "beer" %>
+        <%= image_tag beer.beer_img.url(:beer_index), class: "beer", id: "beer" %>
       </a>
-
-
+      <div id="beername"><center><strong><%= beer.name %></strong></center></div>
     </div>
     <% end %>
   </div>

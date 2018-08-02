@@ -1,3 +1,30 @@
 // Place all the styles related to the Beers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//__________________BOTD__________________//
+.beercontainer {
+  background-color: #fff;
+  padding-top: 2em;
+  padding-left: 2em;
+}
+
+//__________________BEER CARDS__________________//
+#beername {
+  padding: 0;
+}
+
+#beer {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+//__________________NO BEERS HERE__________________//
+.current-category {
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+#beerscategoryname {
+  margin-bottom:20em;
+}
