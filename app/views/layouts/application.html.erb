@@ -11,51 +11,89 @@
 
   <body>
 
+    <!-- __________________NAVIGATION BAR__________________ -->
     <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+            <%= link_to image_tag('logo-26.png'), root_path, :id => "logo" %>
+        </div>
+          <ul class="nav navnav">
+            <li><%= link_to "Home", welcome_index_path %></li>
+            <li><%= link_to "Beers", beers_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Log In", new_user_session_path %></li>
+            <% end %>
+          </ul>
 
-    <div class="container">
+          <!-- __________________CATEGORIES__________________ -->
+          <ul class="nav navnav navbar-right">
+            <li class="dropdown">
+               <a href="#" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">
+                 <%Category.all.each do |category| %>
+                  <li class="<%= 'active' if params[:category] == category.name %>">
+                    <%= link_to category.name, beers_path(category: category.name), class: "link" %>
+                  </li>
+                 <% end %>
+               </ul>
+            </li>
 
-      <div class="navbar-header">
-        <strong><%= link_to "CHEERS", root_path, class: "navbar-brand" %></strong>
-      </div>
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Log In", new_user_session_path %></li>
-          <% end %>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-
-          <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
-             <ul class="dropdown-menu" role="menu">
-               <%Category.all.each do |category| %>
-                <li class="<%= 'active' if params[:category] == category.name %>">
-                  <%= link_to category.name, beers_path(category: category.name), class: "link" %>
-                </li>
-               <% end %>
-             </ul>
-          </li>
-
-
-          <% if user_signed_in? %>
+              <% if user_signed_in? %>
             <li><%= link_to "Add Beer", new_beer_path %></li>
-          <% end %>
-        </ul>
+              <% end %>
+          </ul>
+        </div>
+      </nav>
 
-
-      </div>
-
-    </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
     <div class="container">
+      <!-- __________________REST OF SITE GOES HERE (YIELD)__________________ -->
       <%= yield %>
     </div>
+
+    <!-- __________________FOOTER__________________ -->
+    <footer class="py-5 col-lg-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <p class="m-0 text-center">Copyright &copy; <i>Cheers!</i> 2018</p>
+          </div>
+          <!-- __________________CONTACT US__________________ -->
+          <div class="col-md-4">
+            <h3>Contact Details</h3>
+
+            <!-- __________________ADDRESS__________________ -->
+            <p>
+              201 SE 2nd Avenue
+              </br>Gainesville, FL 32601
+              </br>
+            </p>
+
+            <!-- __________________PHONE__________________ -->
+            <p>
+              <abbr title="Phone">P</abbr>: (352) CHEERS1 or (352) 243-3771
+            </p>
+
+            <!-- __________________EMAIL__________________ -->
+            <p>
+              <abbr title="Email">E</abbr>:
+                <a href="mailto:contact@cheers.com">Contact@Cheers.com</a>
+            </p>
+
+            <!-- __________________HOURS__________________ -->
+            <p>
+              <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+            </p>
+          </div>
+          <!-- __________________END ROW__________________ -->
+        </div>
+      </div>
+    </footer>
+
     </body>
 </html>
