@@ -2,14 +2,55 @@
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+    <div class="form-group">
+        <%= f.label :email %><br>
+        <%= f.input :email, required: false, autofocus: true %><br>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %><br>
+        <%= f.input :password, required: false %><br>
+    </div>
+    <div class="form-group">
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Log in" %>
+    </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+
+<!--######################
+
+
+
+  <br>
+
+
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+-->
