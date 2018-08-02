@@ -15,7 +15,6 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,500);
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* Variables, mixins, etc.. */
@@ -45,6 +44,11 @@ p.alert, p.notice {
 	margin: 0;
 }
 
+#logo {
+	height: 60px;
+	width: auto;
+}
+
 
 /* Navbar/navigation styles */
 
@@ -57,12 +61,16 @@ p.alert, p.notice {
 	padding-bottom: 5px;
 	padding-top: 5px;
 
-	.navbar-nav > li > a {
+	.navnav > li > a {
 		color: #222;
 		&:hover {
 			color: darken(#f1c40f, 5%);
 			transition: 0.5s;
 		}
+	}
+
+	.navbar-nav {
+		display: inline inline-block;
 	}
 
 	.navbar-header {
@@ -79,7 +87,7 @@ p.alert, p.notice {
 		color: #fff;
 	}
 
-	.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+	.navnav > .open > a, .navnav > .open > a:hover, .navnav > .open > a:focus {
 		background-color: darken(#f1c40f, 5%);
 		color: #fff;
 	}
@@ -142,6 +150,8 @@ p.alert, p.notice {
 	}
 
 }
+
+/* FOOTER */
 
 /* Beer styles */
 

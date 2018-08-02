@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
     resources :reviews
   end
-  root 'beers#index'
+  root 'welcome#index'
 end

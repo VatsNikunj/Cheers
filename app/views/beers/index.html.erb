@@ -1,9 +1,34 @@
+<!-- __________________BEER OF THE DAY__________________ -->
+<div class="botd">
+  <h1 class="mt-4 mb-3">BEER OF THE DAY</h1>
+</div>
+
+<!-- __________________BOTD CONTENT__________________ -->
+<div class="row">
+  <div class="col-md-4">
+    <% @botd.each do |botd| %>
+    <!-- __________________BOTD IMAGE__________________ -->
+    <a href="/beers/<%= botd.id %>">
+      <%= image_tag botd.beer_img.url(:beer_index), class: "beer" %>
+    </a>
+  </div>
+
+  <div class="col-md-6">
+    <!-- __________________BOTD NAME AND DESCRIPTION__________________ -->
+    <h2><%= botd.name %></h2>
+    <p>BOTD DESCRIPTION</p>
+    <% end %>
+  </div>
+</div>
+
+<!-- __________________BEER CATEGORIES__________________ -->
 <h1 class="current-category"><%= params[:category] %></h1>
 
 <% if @beers.count == 0 %>
   <h2>No beers here.</h2>
 <% else %>
 
+<!-- __________________BEER DATA__________________ -->
   <div class="row">
 
     <% @beers.each do |beer| %>

@@ -14,9 +14,11 @@ class BeersController < ApplicationController
   def index
     if params[:category].blank?
       @beers = Beer.all.order("created_at DESC")
+      @botd = Beer.all.order("RANDOM()").limit(1)
     else
       @category_id = Category.find_by(name: params[:category]).id
       @beers = Beer.where(:category_id => @category_id).order("created_at DESC")
+      @botd = Beer.where(:category_id => @category_id).order("created_at DESC")
     end
   end
 
