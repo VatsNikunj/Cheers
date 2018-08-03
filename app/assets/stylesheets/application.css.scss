@@ -33,6 +33,7 @@
 body {
 	background-color: #f5f5f5;
 	font-family: 'Lora', serif;
+	margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,7 +162,7 @@ footer {
 	background-color: #fff;
 	float: left;
 	width: 100%;
-
+	margin-top: 5em;
 }
 
 #button {
@@ -234,13 +235,6 @@ footer {
 
 
 }
-/* current-category styles */
-
-.current-category {
-	margin-bottom: 40px;
-
-}
-
 
 /* Reviews styles */
 

@@ -28,3 +28,151 @@
 #beerscategoryname {
   margin-bottom:20em;
 }
+
+//__________________GENERAL BEER STYLING__________________//
+@mixin background-tile {
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px 3px #e5e6e8;
+	padding: 0.75em 0.75em;
+}
+
+.beer {
+	height: 350px;
+	width: 250px;
+	margin-bottom: 40px;
+	@include background-tile;
+}
+
+.beer-show {
+	height: 475px;
+	width: 325px;
+	@include background-tile;
+}
+
+.beer-info {
+	@include background-tile;
+	margin-bottom: 40px;
+
+	.beer-title {
+		margin-top: 0;
+		font-size: 2em;
+	}
+
+	.avg-rating {
+		font-size: 1.5em;
+		margin-top: 15px;
+		margin-bottom: 5px;
+	}
+
+	.number-of-reviews {
+		font-size: 0.85em;
+		font-style: italic;
+	}
+
+	.beer-company {
+		font-size: 1.5em;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		span {
+			font-size: 0.80em;
+		}
+	}
+
+	.beer-desc {
+		font-size: 1.05em;
+		line-height: 1.5;
+		margin-bottom: 15px;
+		margin-top: 15px;
+	}
+}
+
+.beer-on-maps{
+	@include background-tile;
+	margin-top: 40px;
+}
+
+//__________________REVIEWS STYLING__________________//
+.reviews {
+	@include background-tile;
+	margin-top: 40px;
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 2em;
+	}
+
+	.review {
+		border-bottom: 1px solid gainsboro;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+
+		.review-comment {
+			font-size: 1.05em;
+			line-height: 1.5;
+		}
+	}
+
+	.new-review {
+		padding-top: 8px;
+	}
+}
+
+#back {
+  margin-top: 2em;
+}
+
+//__________________NEW BEER FORM STYLING__________________//
+.new-beer-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+	#category_id {
+		margin-bottom: 10px;
+	}
+
+	#beer_beer_img {
+		margin-bottom: 10px;
+	}
+}
+
+
+//__________________EDIT BEER FORM STYLING__________________//
+.edit-beer-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+	#beer_category_id {
+		margin-bottom: 10px;
+	}
+
+	#beer_beer_img {
+		margin-bottom: 10px;
+	}
+
+}
+
+//__________________NEW/EDIT FORM STYLING__________________//
+.new-review-form, .edit-review-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+	#rating-form {
+		margin-bottom: 15px;
+
+		label {
+			display: block;
+		}
+	}
+}
