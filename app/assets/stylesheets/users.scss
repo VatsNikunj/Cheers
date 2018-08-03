@@ -1,3 +1,69 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//__________________IMAGE__________________//
+#userimage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 25em;
+}
+
+//__________________USERNAME__________________//
+#username {
+  text-align: right;
+  margin-top: 1em;
+  margin-right: 2em;
+}
+
+//__________________RECENT REVIEWS__________________//
+.reviewbeer {
+  background-color: #fff;
+  border-color: gray;
+  padding: 1em;
+  padding-left: 2em;
+  margin-right: 1.5em;
+}
+
+.beername {
+  margin-top: 2em;
+}
+
+.review-rating {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.links {
+  margin-top: 0.5em;
+}
+
+//__________________ADDED BEERS__________________//
+.addbeer {
+  background-color: #fff;
+  border-color: gray;
+  padding: 1em;
+  padding-left: 2em;
+  margin-left: 1.5em;
+}
+
+.btn {
+  margin-top: 1em;
+}
+
+//__________________RECOMMENDED__________________//
+.recommendbeer {
+  background-color: #fff;
+  border-color: gray;
+  padding: 1em;
+  padding-left: 2em;
+  margin-top: 4em;
+  margin-left: 1.5em;
+}
+
+.beercard {
+  margin-right: 0;
+  width: 250px;
+}

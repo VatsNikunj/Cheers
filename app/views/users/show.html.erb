@@ -1,69 +1,88 @@
-
-<h1>UserName: <b><%= @user.email %></b></h1>
-
-<h2>Account Activity</h2>
-
-<h3>Recent reviews</h3>
-
-<% @user_reviews.each do |review| %>
-  <h4><%= link_to review.beer.name, beer_path(review.beer) %></h4>
-  <h6>reviewed on <%= review.created_at%></h6>
-  <div class="review-rating" data-score="<%= review.rating %>"></div>
-  <h5> <%= review.comment %></h5>
-  <% if review.user_id == current_user.id %>
-
-    <div class="links btn-group">
-
-
-    <%= link_to "Edit", edit_beer_review_path(review.beer, review), class: "btn btn-custom" %>
-    <%= link_to "Delete", beer_review_path(review.beer, review), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-custom" %>
-
+<div class="container">
+  <div class="row img-fluid text-center">
+    <img id="userimage" src="https://78.media.tumblr.com/67f2c625e12594a194b1b29a38379438/tumblr_pcv488Eb2o1tgvm9ao1_1280.jpg"/>
   </div>
+  <h6 id="username">Username: <%= @user.email %></h6>
+</div>
 
-  <% end %>
+</br>
 
-<% end %>
+<div class="container">
 
+  <h3>Account Activity</h3>
 
-<h3>Recently added beers</h3>
+  <!--__________________REVIEWS AND ADDED BEERS__________________-->
 
-<% @user_beers.each do |beer| %>
-  <h4><%= link_to beer.name, beer_path(beer) %></h4>
-  <h6>created on <%= beer.created_at%></h6>
-  <% if beer.user_id == current_user.id %>
-
-    <%= link_to "Edit", edit_beer_path(beer), class: "btn btn-custom" %>
-    <%= link_to "Delete", beer_path(beer), method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-custom" %>
-
-  <% end %>
-<% end %>
-
-<h2>Recommendations</h2>
-
-<% @user_reviews.each do |review| %>
-  <% if review.rating == Review.maximum('rating') %>
-    <% @beer = Beer.find(review.beer_id)%>
-    <h6>Based on your choice of <%= @beer.name%>: </h6>
-      <% Beer.all.each do |bear| %>
-        <% if bear.category_id == @beer.category_id or bear.ABV == @beer.ABV %>
-          <% if bear.user_id != @beer.user_id %>
-            <div class="col-md-3">
-              <a href="/beers/<%= bear.id %>">
-                <%= image_tag bear.beer_img.url(:beer_index), class: "beer" %>
-              </a>
+  <!--__________________REVIEWS__________________-->
+  <div class="row">
+    <div class="col-md-4 reviewbeer">
+      <h4><strong>Recent Reviews</strong></h4>
+        <% @user_reviews.each do |review| %>
+          <h5 class="beername"><%= link_to review.beer.name, beer_path(review.beer) %></h5>
+          <h7>reviewed on <%= review.created_at%></h7>
+          <div class="review-rating" data-score="<%= review.rating %>"></div>
+          <h6>"<%= review.comment %>"</h6>
+          <% if review.user_id == current_user.id %>
+            <div class="links btn-group">
+              <%= link_to "Edit", edit_beer_review_path(review.beer, review), class:"btn btn-custom" %>
+              <%= link_to "Delete", beer_review_path(review.beer, review), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-custom"%>
             </div>
           <% end %>
         <% end %>
-      <% end %>
-  <% end %>
-<% end %>
+    </div>
 
-<script>
-$('.review-rating').raty({
-  readOnly: true,
-  score: function(){
-    return $(this).attr('data-score');
-  },
-  path: '/assets/'
-});
-</script>
+    <!--__________________ADDED BEERS__________________-->
+    <div class="col-md-6 addbeer">
+      <h4><strong>Added Beers</strong></h4>
+      <% @user_beers.each do |beer| %>
+        <h5 class="beername"><%= link_to beer.name, beer_path(beer) %></h5>
+        <h7>created on <%=beer.created_at%></h7>
+        <% if beer.user_id == current_user.id %>
+
+      </br>
+          <%= link_to "Edit", edit_beer_path(beer), class: "btn btn-custom" %>
+          <%= link_to "Delete", beer_path(beer), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom"%>
+
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <!--__________________RECOMMENDED BEERS__________________-->
+  <div class="row recommendbeer">
+    <div class="col-lg-12">
+      <h4><strong>Recommended Beers</strong></h4>
+      <% @user_reviews.each do |review| %>
+        <% if review.rating == Review.maximum('rating') %>
+          <% @beer = Beer.find(review.beer_id) %>
+          <h6>Based on your choice of <i><%= @beer.name %>:</i></h6>
+            <% Beer.all.each do |beer| %>
+              <% if beer.category_id == @beer.category_id or beer.ABV == @beer.ABV %>
+                <% if beer.user_id != @beer.user_id %>
+                  <div class="beercard">
+                    <a href="/beers/<% beer.id %>">
+                      <%= image_tag beer.beer_img.url(:beer_index), class: "beer" %>
+                    </a>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+  <!--__________________SCRIPTS__________________-->
+      <script>
+        $('.review-rating').raty ({
+          readOnly: true,
+          score: function(){
+            return $(this).attr('data-score');
+          },
+          path: '/assets/'
+        });
+      </script>
+
+    </div>
+  </div>
+
+</div>
